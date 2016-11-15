@@ -60,24 +60,25 @@ export default class BoundingBox {
     let pageXOffset = window.pageXOffset;
     let pageYOffset = window.pageYOffset;
 
-    let inlineLeft = triggerRect.left + (percentageOffsetX * triggerRect.width)
-      - (this.el.clientWidth / 2) + pageXOffset;
-    let inlineTop = triggerRect.top + (percentageOffsetY * triggerRect.height)
-      - (this.el.clientHeight / 2) + pageYOffset;
+    let inlineLeft = (percentageOffsetX * triggerRect.width)
+      - (this.el.clientWidth / 2);
 
-    let elRect = this.el.getBoundingClientRect();
+    let inlineTop = (percentageOffsetY * triggerRect.height)
+      - (this.el.clientHeight / 2);
 
-    if (inlineLeft < triggerRect.left + pageXOffset) {
-      inlineLeft = triggerRect.left + pageXOffset;
-    } else if (inlineLeft + this.el.clientWidth > triggerRect.left + triggerRect.width + pageXOffset) {
-      inlineLeft = triggerRect.left + triggerRect.width - this.el.clientWidth + pageXOffset;
-    }
-
-    if (inlineTop < triggerRect.top + pageYOffset) {
-      inlineTop = triggerRect.top + pageYOffset;
-    } else if (inlineTop + this.el.clientHeight > triggerRect.top + triggerRect.height + pageYOffset) {
-      inlineTop = triggerRect.top + triggerRect.height - this.el.clientHeight + pageYOffset;
-    }
+    // let elRect = this.el.getBoundingClientRect();
+    //
+    // if (inlineLeft < triggerRect.left + pageXOffset) {
+    //   inlineLeft = triggerRect.left + pageXOffset;
+    // } else if (inlineLeft + this.el.clientWidth > triggerRect.left + triggerRect.width + pageXOffset) {
+    //   inlineLeft = triggerRect.left + triggerRect.width - this.el.clientWidth + pageXOffset;
+    // }
+    //
+    // if (inlineTop < triggerRect.top + pageYOffset) {
+    //   inlineTop = triggerRect.top + pageYOffset;
+    // } else if (inlineTop + this.el.clientHeight > triggerRect.top + triggerRect.height + pageYOffset) {
+    //   inlineTop = triggerRect.top + triggerRect.height - this.el.clientHeight + pageYOffset;
+    // }
 
     this.el.style.left = `${inlineLeft}px`;
     this.el.style.top = `${inlineTop}px`;
